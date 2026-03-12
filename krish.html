@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Krishna Babu Prodduturu — IT Student</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+  :root{--accent:#FF5500;--accent2:#FF8C00;--bg:#0a0a0a;--bg2:#111111;--bg3:#161616;--card:#1a1a1a;--border:rgba(255,85,0,0.15);--text:#f0f0f0;--muted:#888;--white:#fff;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+  ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px;}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");opacity:0.4;pointer-events:none;z-index:0;}
+  nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:18px 60px;background:rgba(10,10,10,0.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:all .3s;}
+  .logo{font-family:'Bebas Neue',cursive;font-size:28px;color:var(--accent);letter-spacing:2px;text-decoration:none;}
+  .nav-links{display:flex;gap:36px;list-style:none;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;letter-spacing:.5px;transition:.2s;position:relative;}
+  .nav-links a:hover,.nav-links a.active{color:var(--white);}
+  .nav-links a.active::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--accent);border-radius:1px;}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+  .hamburger span{width:24px;height:2px;background:var(--text);border-radius:1px;}
+  #home{min-height:100vh;display:flex;align-items:center;padding:120px 60px 80px;position:relative;overflow:hidden;}
+  .hero-bg-shape{position:absolute;top:-100px;right:-100px;width:700px;height:700px;background:radial-gradient(ellipse at center,rgba(255,85,0,0.07) 0%,transparent 70%);pointer-events:none;}
+  .hero-bg-shape2{position:absolute;bottom:-200px;left:-100px;width:500px;height:500px;background:radial-gradient(ellipse at center,rgba(255,85,0,0.04) 0%,transparent 70%);pointer-events:none;}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;width:100%;max-width:1200px;margin:0 auto;position:relative;z-index:1;}
+  .hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,85,0,0.1);border:1px solid rgba(255,85,0,0.3);padding:6px 14px;border-radius:20px;font-size:13px;color:var(--accent);margin-bottom:20px;}
+  .hero-tag::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+  .hero-subtitle{font-size:16px;color:var(--muted);margin-bottom:8px;font-weight:300;letter-spacing:1px;}
+  .hero-name{font-family:'Syne',sans-serif;font-size:52px;font-weight:800;line-height:1.05;margin-bottom:16px;color:var(--white);}
+  .hero-title{font-family:'Bebas Neue',cursive;font-size:72px;line-height:.95;color:var(--accent);letter-spacing:2px;margin-bottom:28px;}
+  .hero-desc{color:var(--muted);font-size:16px;line-height:1.7;max-width:460px;margin-bottom:36px;}
+  .hero-socials{display:flex;gap:12px;margin-bottom:40px;}
+  .social-btn{width:40px;height:40px;border:1px solid rgba(255,255,255,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted);cursor:pointer;transition:.2s;text-decoration:none;font-size:16px;}
+  .social-btn:hover{border-color:var(--accent);color:var(--accent);background:rgba(255,85,0,0.08);}
+  .hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-primary{background:var(--accent);color:#fff;border:none;padding:14px 32px;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:15px;cursor:pointer;transition:.2s;}
+  .btn-primary:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,85,0,0.3);}
+  .btn-outline{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.2);padding:14px 32px;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:15px;cursor:pointer;transition:.2s;}
+  .btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+  .hero-image-wrap{display:flex;justify-content:center;align-items:center;}
+  .hero-circle{width:420px;height:420px;border-radius:50%;background:linear-gradient(135deg,rgba(255,85,0,0.1),rgba(255,85,0,0.02));border:1px solid rgba(255,85,0,0.2);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
+  .hero-circle::before{content:'';position:absolute;inset:-2px;border-radius:50%;background:conic-gradient(var(--accent) 0deg 90deg,transparent 90deg 360deg);animation:spin 8s linear infinite;z-index:-1;opacity:.3;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .placeholder-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--muted);text-align:center;padding:20px;}
+  .placeholder-wrap svg{width:80px;height:80px;opacity:.3;}
+  .placeholder-wrap p{font-size:13px;}
+  section{padding:100px 60px;position:relative;}
+  .section-inner{max-width:1200px;margin:0 auto;}
+  .section-label{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;}
+  .section-label::before{content:'';width:24px;height:2px;background:var(--accent);}
+  .section-title{font-family:'Syne',sans-serif;font-size:48px;font-weight:800;line-height:1.1;margin-bottom:16px;}
+  .section-desc{color:var(--muted);font-size:16px;line-height:1.7;max-width:540px;}
+  #about{background:var(--bg);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:60px;}
+  .about-img-wrap{position:relative;}
+  .about-img-box{width:100%;aspect-ratio:3/4;background:var(--card);border-radius:20px;border:1px solid rgba(255,255,255,0.06);overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  .about-badge{position:absolute;bottom:-20px;right:-20px;background:var(--accent);color:#fff;border-radius:12px;padding:16px 20px;text-align:center;}
+  .about-badge-num{font-family:'Bebas Neue',cursive;font-size:28px;line-height:1;}
+  .about-badge-text{font-size:11px;letter-spacing:1px;}
+  .about-text{color:var(--muted);font-size:16px;line-height:1.8;margin-bottom:16px;}
+  .skills-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px;}
+  .skill-tag{background:rgba(255,85,0,0.08);border:1px solid rgba(255,85,0,0.2);color:var(--accent);padding:6px 16px;border-radius:20px;font-size:13px;font-weight:500;}
+  .about-info{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0;}
+  .info-item label{font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
+  .info-item p{font-size:15px;color:var(--text);margin-top:4px;font-weight:500;}
+  #portfolio{background:var(--bg2);}
+  .portfolio-filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:40px;margin-bottom:40px;}
+  .filter-btn{background:transparent;border:1px solid rgba(255,255,255,0.1);color:var(--muted);padding:8px 20px;border-radius:20px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:13px;transition:.2s;}
+  .filter-btn:hover,.filter-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .project-card{background:var(--card);border:1px solid rgba(255,255,255,0.06);border-radius:16px;overflow:hidden;transition:.3s;}
+  .project-card.has-link{cursor:pointer;}
+  .project-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(0,0,0,0.4);border-color:rgba(255,85,0,0.2);}
+  .project-thumb{aspect-ratio:16/10;background:linear-gradient(135deg,var(--bg3),rgba(255,85,0,0.05));display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;font-size:48px;}
+  .project-overlay{position:absolute;inset:0;background:rgba(255,85,0,0.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:.3s;font-size:28px;}
+  .project-card.has-link:hover .project-overlay{opacity:1;}
+  .project-info{padding:20px;}
+  .project-cat{font-size:11px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+  .project-name{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;margin-bottom:6px;}
+  .project-desc{font-size:13px;color:var(--muted);line-height:1.6;}
+  .project-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;}
+  .project-tag{font-size:11px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);padding:3px 10px;border-radius:10px;color:var(--muted);}
+  .empty-state{text-align:center;padding:60px 20px;color:var(--muted);font-size:15px;grid-column:1/-1;}
+  .empty-state div{font-size:48px;margin-bottom:12px;}
+  #contact{background:var(--bg);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;margin-top:60px;}
+  .contact-info-item{display:flex;align-items:flex-start;gap:16px;margin-bottom:32px;}
+  .contact-icon{width:48px;height:48px;background:rgba(255,85,0,0.1);border:1px solid rgba(255,85,0,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;}
+  .contact-label{font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+  .contact-val{font-size:15px;color:var(--text);font-weight:500;}
+  .contact-form{background:var(--card);border:1px solid rgba(255,255,255,0.06);border-radius:20px;padding:40px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .form-group{margin-bottom:20px;}
+  .form-group label{display:block;font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
+  .form-group input,.form-group textarea{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;transition:.2s;outline:none;}
+  .form-group input:focus,.form-group textarea:focus{border-color:var(--accent);background:rgba(255,85,0,0.05);}
+  .form-group textarea{resize:vertical;min-height:120px;}
+  .submit-btn{width:100%;background:var(--accent);color:#fff;border:none;padding:16px;border-radius:10px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;cursor:pointer;transition:.2s;}
+  .submit-btn:hover{background:var(--accent2);transform:translateY(-2px);}
+  .form-message{margin-top:16px;padding:12px;border-radius:8px;font-size:14px;display:none;}
+  .form-message.success{background:rgba(0,200,100,0.1);border:1px solid rgba(0,200,100,0.2);color:#00c864;}
+  .form-message.error{background:rgba(255,50,50,0.1);border:1px solid rgba(255,50,50,0.2);color:#ff3232;}
+  footer{background:var(--bg2);border-top:1px solid rgba(255,255,255,0.05);padding:40px 60px;display:flex;align-items:center;justify-content:space-between;}
+  .footer-logo{font-family:'Bebas Neue',cursive;font-size:24px;color:var(--accent);}
+  .footer-copy{color:var(--muted);font-size:13px;}
+  .footer-links{display:flex;gap:24px;}
+  .footer-links a{color:var(--muted);text-decoration:none;font-size:13px;transition:.2s;}
+  .footer-links a:hover{color:var(--accent);}
+
+  /* LOGIN MODAL */
+  #login-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(12px);z-index:3000;align-items:center;justify-content:center;}
+  #login-modal.open{display:flex;}
+  .login-box{background:var(--bg2);border:1px solid rgba(255,85,0,0.25);border-radius:24px;padding:48px 40px;width:100%;max-width:420px;position:relative;animation:slideUp .3s ease;}
+  @keyframes slideUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+  .login-logo{font-family:'Bebas Neue',cursive;font-size:36px;color:var(--accent);letter-spacing:3px;margin-bottom:4px;}
+  .login-sub{font-size:13px;color:var(--muted);margin-bottom:36px;}
+  .login-field{margin-bottom:20px;}
+  .login-field label{display:block;font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;}
+  .login-field input{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 16px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:.2s;}
+  .login-field input:focus{border-color:var(--accent);background:rgba(255,85,0,0.05);}
+  .login-btn{width:100%;background:var(--accent);color:#fff;border:none;padding:15px;border-radius:10px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:15px;cursor:pointer;transition:.2s;margin-top:4px;}
+  .login-btn:hover{background:var(--accent2);transform:translateY(-1px);}
+  .login-error{background:rgba(255,50,50,0.1);border:1px solid rgba(255,50,50,0.2);color:#ff6b6b;padding:10px 14px;border-radius:8px;font-size:13px;margin-top:14px;display:none;}
+  .login-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--muted);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:.2s;}
+  .login-close:hover{background:rgba(255,50,50,0.1);color:#ff5555;}
+  .login-hint{margin-top:20px;padding:14px;background:rgba(255,85,0,0.06);border:1px solid rgba(255,85,0,0.15);border-radius:10px;font-size:12px;color:var(--muted);line-height:1.7;}
+  .login-hint strong{color:var(--text);}
+
+  /* ADMIN PANEL */
+  #admin-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(6px);z-index:2000;}
+  #admin-overlay.open{display:block;}
+  #admin-panel{display:none;position:fixed;top:0;right:0;bottom:0;width:720px;background:var(--bg2);border-left:1px solid rgba(255,85,0,0.2);z-index:2001;overflow-y:auto;transform:translateX(100%);transition:.4s cubic-bezier(.25,.46,.45,.94);}
+  #admin-panel.open{transform:translateX(0);}
+  .admin-header{padding:22px 32px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:var(--bg2);z-index:10;}
+  .admin-title{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;}
+  .admin-title span{color:var(--accent);}
+  .admin-header-right{display:flex;align-items:center;gap:10px;}
+  .admin-logout{background:rgba(255,50,50,0.08);border:1px solid rgba(255,50,50,0.2);color:#ff6b6b;padding:7px 14px;border-radius:7px;font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:.2s;}
+  .admin-logout:hover{background:rgba(255,50,50,0.2);}
+  .admin-close{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--text);width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:.2s;}
+  .admin-close:hover{background:rgba(255,50,50,0.1);color:#ff5555;}
+  .admin-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,0.06);overflow-x:auto;}
+  .admin-tab{padding:14px 20px;font-size:13px;font-weight:500;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:.2s;white-space:nowrap;}
+  .admin-tab.active{color:var(--accent);border-bottom-color:var(--accent);}
+  .admin-body{padding:32px;}
+  .admin-section{display:none;}
+  .admin-section.active{display:block;}
+  .afield{margin-bottom:20px;}
+  .afield label{display:block;font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;}
+  .afield input,.afield textarea,.afield select{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:12px 14px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;transition:.2s;outline:none;}
+  .afield input:focus,.afield textarea:focus,.afield select:focus{border-color:var(--accent);background:rgba(255,85,0,0.04);}
+  .afield textarea{resize:vertical;min-height:90px;}
+  .afield select option{background:var(--bg2);}
+  .arow{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .abtn{background:var(--accent);color:#fff;border:none;padding:12px 24px;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;cursor:pointer;transition:.2s;}
+  .abtn:hover{background:var(--accent2);transform:translateY(-1px);}
+  .abtn-danger{background:rgba(255,50,50,0.08);color:#ff6b6b;border:1px solid rgba(255,50,50,0.2);padding:7px 12px;border-radius:6px;font-size:12px;cursor:pointer;transition:.2s;font-family:'DM Sans',sans-serif;}
+  .abtn-danger:hover{background:rgba(255,50,50,0.2);}
+  .adivider{border:none;border-top:1px solid rgba(255,255,255,0.06);margin:24px 0;}
+  .asave{font-size:13px;color:#00c864;margin-left:12px;display:none;font-weight:500;}
+  .aitem{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:16px 18px;margin-bottom:10px;display:flex;align-items:flex-start;gap:14px;}
+  .aitem-icon{width:42px;height:42px;background:rgba(255,85,0,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+  .aitem-info{flex:1;min-width:0;}
+  .aitem-name{font-weight:600;font-size:14px;margin-bottom:3px;}
+  .aitem-meta{font-size:12px;color:var(--muted);}
+  .aitem-actions{flex-shrink:0;}
+  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;}
+  .stat-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:20px;text-align:center;}
+  .stat-card .num{font-family:'Bebas Neue',cursive;font-size:44px;color:var(--accent);}
+  .stat-card .lbl{font-size:12px;color:var(--muted);letter-spacing:.5px;}
+  .msg-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:18px 20px;margin-bottom:10px;}
+  .msg-card-header{display:flex;justify-content:space-between;margin-bottom:4px;}
+  .msg-card-name{font-weight:600;font-size:14px;}
+  .msg-card-date{font-size:11px;color:var(--muted);}
+  .msg-card-email{font-size:12px;color:var(--accent);margin-bottom:4px;}
+  .msg-card-subject{font-size:12px;color:var(--muted);font-style:italic;margin-bottom:8px;}
+  .msg-card-body{font-size:13px;color:var(--text);line-height:1.6;}
+  .sec-heading{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;margin-bottom:18px;}
+  .hint{font-size:12px;color:var(--muted);margin-top:5px;}
+  .admin-trigger{position:fixed;bottom:32px;right:32px;background:var(--accent);color:#fff;border:none;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:22px;z-index:999;box-shadow:0 8px 30px rgba(255,85,0,0.4);transition:.2s;}
+  .admin-trigger:hover{transform:scale(1.1);box-shadow:0 12px 40px rgba(255,85,0,0.5);}
+  .admin-trigger-tip{position:fixed;bottom:40px;right:94px;background:var(--card);border:1px solid rgba(255,255,255,0.1);padding:6px 12px;border-radius:6px;font-size:12px;color:var(--muted);white-space:nowrap;opacity:0;pointer-events:none;transition:.2s;}
+  .admin-trigger:hover+.admin-trigger-tip{opacity:1;}
+  .fade-up{opacity:0;transform:translateY(30px);transition:opacity .6s,transform .6s;}
+  .fade-up.visible{opacity:1;transform:translateY(0);}
+  @media(max-width:900px){
+    nav{padding:16px 24px;}.nav-links{display:none;}.hamburger{display:flex;}
+    #home,section{padding:80px 24px;}#home{padding-top:110px;}
+    .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;}
+    .hero-image-wrap{order:-1;}.hero-circle{width:260px;height:260px;}
+    .hero-title{font-size:52px;}.hero-name{font-size:34px;}
+    .portfolio-grid{grid-template-columns:1fr 1fr;}
+    footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px;}
+    #admin-panel{width:100%;}.form-row,.arow{grid-template-columns:1fr;}
+  }
+  @media(max-width:600px){.portfolio-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#home" class="logo">KRISHNA</a>
+  <ul class="nav-links">
+    <li><a href="#home" class="active" onclick="setActive(this)">Home</a></li>
+    <li><a href="#about" onclick="setActive(this)">About</a></li>
+    <li><a href="#portfolio" onclick="setActive(this)">Portfolio</a></li>
+    <li><a href="#contact" onclick="setActive(this)">Contact</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<section id="home">
+  <div class="hero-bg-shape"></div><div class="hero-bg-shape2"></div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-tag">Information Technology Student</div>
+      <p class="hero-subtitle">Hi I am</p>
+      <h1 class="hero-name" id="hero-name">Krishna Babu Prodduturu</h1>
+      <div class="hero-title" id="hero-title">IT Student</div>
+      <p class="hero-desc" id="hero-desc">A passionate Information Technology student eager to learn and grow. I enjoy building projects with C, Java, HTML &amp; CSS and love turning ideas into working programs.</p>
+      <div class="hero-socials">
+        <a id="s-github" href="#" class="social-btn" title="GitHub">🐙</a>
+        <a id="s-linkedin" href="#" class="social-btn" title="LinkedIn">💼</a>
+        <a id="s-instagram" href="#" class="social-btn" title="Instagram">📷</a>
+      </div>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="scrollTo('portfolio')">View My Projects</button>
+        <button class="btn-outline" onclick="scrollTo('contact')">Contact Me</button>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <div class="hero-circle">
+        <div class="placeholder-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+          <p>Add photo via Admin</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">Who I am</div>
+    <div class="about-grid">
+      <div class="about-img-wrap fade-up">
+        <div class="about-img-box">
+          <div class="placeholder-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" width="60" height="60"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
+            <p>Add photo via Admin</p>
+          </div>
+        </div>
+        <div class="about-badge"><div class="about-badge-num">IT</div><div class="about-badge-text">STUDENT</div></div>
+      </div>
+      <div class="fade-up">
+        <h2 class="section-title">About Me</h2>
+        <p class="about-text" id="about-p1">Hi! I'm Krishna Babu Prodduturu, an Information Technology student from Hyderabad. I'm passionate about programming and enjoy building small projects to sharpen my skills.</p>
+        <p class="about-text" id="about-p2">I'm currently learning and growing every day — exploring C, Java, and web development with HTML &amp; CSS. Looking forward to gaining real-world experience.</p>
+        <div class="about-info">
+          <div class="info-item"><label>Location</label><p id="a-loc">Hyderabad, India</p></div>
+          <div class="info-item"><label>Email</label><p id="a-email">krishna@email.com</p></div>
+          <div class="info-item"><label>Status</label><p id="a-avail" style="color:var(--accent)">Open to opportunities</p></div>
+          <div class="info-item"><label>Education</label><p>IT Student</p></div>
+        </div>
+        <div class="skills-list" id="skills-list"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="section-inner">
+    <div class="section-label">My Work</div>
+    <h2 class="section-title fade-up">Projects</h2>
+    <p class="section-desc fade-up">Things I've built while learning.</p>
+    <div class="portfolio-filters" id="pf-filters"></div>
+    <div class="portfolio-grid" id="pf-grid"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Get in touch</div>
+    <h2 class="section-title fade-up">Say Hello</h2>
+    <p class="section-desc fade-up">Have a question or want to connect? Drop me a message!</p>
+    <div class="contact-grid">
+      <div class="fade-up">
+        <div class="contact-info-item"><div class="contact-icon">📧</div><div><div class="contact-label">Email</div><div class="contact-val" id="c-email">krishna@email.com</div></div></div>
+        <div class="contact-info-item"><div class="contact-icon">📍</div><div><div class="contact-label">Location</div><div class="contact-val" id="c-loc">Hyderabad, India</div></div></div>
+        <div class="contact-info-item"><div class="contact-icon">📱</div><div><div class="contact-label">Phone</div><div class="contact-val" id="c-phone">+91 00000 00000</div></div></div>
+      </div>
+      <div class="contact-form fade-up">
+        <div class="form-row">
+          <div class="form-group"><label>Your Name</label><input id="cf-name" placeholder="John Doe"/></div>
+          <div class="form-group"><label>Email</label><input type="email" id="cf-email" placeholder="john@email.com"/></div>
+        </div>
+        <div class="form-group"><label>Subject</label><input id="cf-subject" placeholder="Just saying hi!"/></div>
+        <div class="form-group"><label>Message</label><textarea id="cf-msg" placeholder="Your message..."></textarea></div>
+        <button class="submit-btn" onclick="submitContact()">Send Message →</button>
+        <div class="form-message" id="form-status"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">KRISHNA</div>
+  <p class="footer-copy">© 2026 Krishna Babu Prodduturu. All rights reserved.</p>
+  <div class="footer-links"><a href="#home">Home</a><a href="#portfolio">Work</a><a href="#contact">Contact</a></div>
+</footer>
+
+<!-- ADMIN TRIGGER -->
+<button class="admin-trigger" onclick="showLogin()">⚙</button>
+<div class="admin-trigger-tip">Admin Login</div>
+
+<!-- LOGIN MODAL -->
+<div id="login-modal">
+  <div class="login-box">
+    <button class="login-close" onclick="hideLogin()">✕</button>
+    <div class="login-logo">ADMIN</div>
+    <div class="login-sub">Sign in to manage your portfolio</div>
+    <div class="login-field"><label>Username</label><input id="l-user" type="text" placeholder="Username" autocomplete="off"/></div>
+    <div class="login-field"><label>Password</label><input id="l-pass" type="password" placeholder="Password" onkeydown="if(event.key==='Enter')doLogin()"/></div>
+    <button class="login-btn" onclick="doLogin()">Sign In →</button>
+    <div class="login-error" id="l-error">Incorrect username or password.</div>
+    <div class="login-hint">
+      Default — <strong>user:</strong> admin &nbsp;|&nbsp; <strong>pass:</strong> krishna123<br>
+      <span style="color:rgba(255,85,0,0.7);">Change anytime in Admin → Settings</span>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN OVERLAY + PANEL -->
+<div id="admin-overlay" onclick="closeAdmin()"></div>
+<div id="admin-panel">
+  <div class="admin-header">
+    <div class="admin-title">Admin <span>Panel</span></div>
+    <div class="admin-header-right">
+      <button class="admin-logout" onclick="logoutAdmin()">🚪 Logout</button>
+      <button class="admin-close" onclick="closeAdmin()">✕</button>
+    </div>
+  </div>
+  <div class="admin-tabs">
+    <div class="admin-tab active" onclick="switchTab('dash',this)">📊 Dashboard</div>
+    <div class="admin-tab" onclick="switchTab('proj',this)">🗂 Projects</div>
+    <div class="admin-tab" onclick="switchTab('prof',this)">👤 Profile</div>
+    <div class="admin-tab" onclick="switchTab('msgs',this)">✉️ Messages</div>
+    <div class="admin-tab" onclick="switchTab('sett',this)">⚙️ Settings</div>
+  </div>
+  <div class="admin-body">
+
+    <!-- DASHBOARD -->
+    <div class="admin-section active" id="tab-dash">
+      <div class="stats-grid">
+        <div class="stat-card"><div class="num" id="d-proj">0</div><div class="lbl">Projects</div></div>
+        <div class="stat-card"><div class="num" id="d-msgs">0</div><div class="lbl">Messages</div></div>
+      </div>
+      <div class="sec-heading">Recent Messages</div>
+      <div id="d-msg-preview"></div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="admin-section" id="tab-proj">
+      <div class="sec-heading">Add New Project</div>
+      <div class="afield"><label>Project Name *</label><input id="pj-name" placeholder="e.g. Library Management System"/></div>
+      <div class="arow">
+        <div class="afield"><label>Category *</label><input id="pj-cat" placeholder="Java / Web / C"/></div>
+        <div class="afield"><label>Year</label><input id="pj-year" placeholder="2025"/></div>
+      </div>
+      <div class="afield"><label>Description</label><textarea id="pj-desc" placeholder="What does this project do?"></textarea></div>
+      <div class="afield"><label>Tags (comma separated)</label><input id="pj-tags" placeholder="Java, OOP, Console"/></div>
+      <div class="afield"><label>GitHub / Project Link (optional)</label><input id="pj-link" placeholder="https://github.com/..."/></div>
+      <div class="afield"><label>Icon (emoji)</label><input id="pj-icon" placeholder="💻" style="font-size:22px;width:70px;"/></div>
+      <div style="display:flex;align-items:center;">
+        <button class="abtn" onclick="addProject()">+ Add Project</button>
+        <span class="asave" id="pj-saved">✓ Project added!</span>
+      </div>
+      <hr class="adivider"/>
+      <div class="sec-heading">All Projects (<span id="pj-count">0</span>)</div>
+      <div id="pj-list"></div>
+    </div>
+
+    <!-- PROFILE -->
+    <div class="admin-section" id="tab-prof">
+      <div class="sec-heading">Edit Your Info</div>
+      <div class="afield"><label>Full Name</label><input id="pf-name" placeholder="Krishna Babu Prodduturu"/></div>
+      <div class="afield"><label>Title (big text on homepage)</label><input id="pf-title" placeholder="IT Student"/></div>
+      <div class="afield"><label>Hero Bio (short intro)</label><textarea id="pf-desc"></textarea></div>
+      <hr class="adivider"/>
+      <div class="sec-heading">About Section Text</div>
+      <div class="afield"><label>Paragraph 1</label><textarea id="pf-a1"></textarea></div>
+      <div class="afield"><label>Paragraph 2</label><textarea id="pf-a2"></textarea></div>
+      <hr class="adivider"/>
+      <div class="sec-heading">Contact Details</div>
+      <div class="arow">
+        <div class="afield"><label>Email</label><input id="pf-email" type="email" placeholder="you@email.com"/></div>
+        <div class="afield"><label>Phone</label><input id="pf-phone" placeholder="+91 00000 00000"/></div>
+      </div>
+      <div class="afield"><label>Location</label><input id="pf-loc" placeholder="Hyderabad, India"/></div>
+      <hr class="adivider"/>
+      <div class="sec-heading">Social Links</div>
+      <div class="afield"><label>GitHub URL</label><input id="pf-gh" placeholder="https://github.com/yourusername"/></div>
+      <div class="afield"><label>LinkedIn URL</label><input id="pf-li" placeholder="https://linkedin.com/in/yourprofile"/></div>
+      <div class="afield"><label>Instagram URL</label><input id="pf-ig" placeholder="https://instagram.com/yourusername"/></div>
+      <hr class="adivider"/>
+      <div class="sec-heading">Skills &amp; Status</div>
+      <div class="afield">
+        <label>Skills (comma separated)</label>
+        <input id="pf-skills" placeholder="C, Java, HTML, CSS"/>
+        <div class="hint">e.g. C, Java, HTML, CSS, Python, MySQL</div>
+      </div>
+      <div class="afield">
+        <label>Availability Status</label>
+        <select id="pf-avail">
+          <option value="Open to opportunities">Open to opportunities</option>
+          <option value="Looking for internship">Looking for internship</option>
+          <option value="Currently busy">Currently busy</option>
+          <option value="Open to collaborations">Open to collaborations</option>
+        </select>
+      </div>
+      <div style="display:flex;align-items:center;">
+        <button class="abtn" onclick="saveProfile()">Save Profile</button>
+        <span class="asave" id="pf-saved">✓ Saved!</span>
+      </div>
+    </div>
+
+    <!-- MESSAGES -->
+    <div class="admin-section" id="tab-msgs">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+        <div class="sec-heading" style="margin:0;">All Messages (<span id="m-count">0</span>)</div>
+        <button class="abtn-danger" onclick="clearMsgs()">Clear All</button>
+      </div>
+      <div id="m-list"></div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="admin-section" id="tab-sett">
+      <div class="sec-heading">Change Login Credentials</div>
+      <div class="afield"><label>New Username</label><input id="s-user" placeholder="admin"/></div>
+      <div class="afield"><label>New Password</label><input type="password" id="s-pass" placeholder="New password"/></div>
+      <div class="afield"><label>Confirm New Password</label><input type="password" id="s-pass2" placeholder="Repeat password"/></div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <button class="abtn" onclick="saveCreds()">Update Credentials</button>
+        <span class="asave" id="s-saved">✓ Updated!</span>
+      </div>
+      <div class="login-error" id="s-err" style="display:none;margin-top:8px;"></div>
+      <hr class="adivider"/>
+      <div class="sec-heading">Accent Color</div>
+      <div class="afield"><label>Pick a Color</label><input type="color" id="s-color" value="#FF5500" style="height:48px;border-radius:8px;cursor:pointer;"/></div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <button class="abtn" onclick="saveColor()">Apply Color</button>
+        <span class="asave" id="s-color-saved">✓ Applied!</span>
+      </div>
+      <hr class="adivider"/>
+      <div class="sec-heading" style="color:#ff6b6b;">Danger Zone</div>
+      <button class="abtn-danger" onclick="resetAll()" style="padding:12px 20px;font-size:13px;">⚠ Reset All Portfolio Data</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ========== DATA ==========
+const VER = '7';
+const DEF = {
+  profile:{name:'Krishna Babu Prodduturu',title:'IT Student',desc:'A passionate Information Technology student eager to learn and grow. I enjoy building projects with C, Java, HTML & CSS and love turning ideas into working programs.',a1:"Hi! I'm Krishna Babu Prodduturu, an Information Technology student from Hyderabad. I'm passionate about programming and enjoy building small projects to sharpen my skills.",a2:"I'm currently learning and growing every day — exploring C, Java, and web development with HTML & CSS. Looking forward to gaining real-world experience.",email:'prodduturukrishnababu@gmail.com',phone:'+91 00000 00000',loc:'Vijayawada, India',gh:'#',li:'#',ig:'#',skills:'C, Java, HTML, CSS',avail:'Open to opportunities'},
+  projects:[
+    {id:1,name:'Student Portfolio Website',cat:'Web',year:'2025',desc:'A personal portfolio website built using HTML and CSS to showcase my skills.',tags:'HTML, CSS',link:'',icon:'🌐'},
+    {id:2,name:'Calculator App',cat:'Java',year:'2025',desc:'A basic calculator application built in Java using Swing, supporting all arithmetic operations.',tags:'Java, Swing',link:'',icon:'🔢'},
+    {id:3,name:'Pattern Programs',cat:'C',year:'2024',desc:'A collection of star and number pattern programs in C to practice loops and logic.',tags:'C',link:'',icon:'🔷'},
+  ],
+  messages:[],
+  creds:{u:'admin',p:'krishna123'},
+  color:'#FF5500'
+};
+
+let D = (()=>{
+  try{
+    if(localStorage.getItem('pf_ver')!==VER){localStorage.removeItem('pf_d');}
+    const r=localStorage.getItem('pf_d');
+    if(r){const p=JSON.parse(r);return{profile:{...DEF.profile,...p.profile},projects:p.projects||DEF.projects,messages:p.messages||[],creds:p.creds||DEF.creds,color:p.color||DEF.color};}
+  }catch(e){}
+  return JSON.parse(JSON.stringify(DEF));
+})();
+
+function save(){try{localStorage.setItem('pf_d',JSON.stringify(D));localStorage.setItem('pf_ver',VER);}catch(e){}}
+function g(id){return document.getElementById(id);}
+function t(id,v){const e=g(id);if(e)e.textContent=v;}
+function v(id){const e=g(id);return e?e.value.trim():'';}
+
+// ========== RENDER SITE ==========
+let curFilter='all';
+function renderSite(){
+  const p=D.profile;
+  t('hero-name',p.name); t('hero-title',p.title); t('hero-desc',p.desc);
+  t('about-p1',p.a1); t('about-p2',p.a2);
+  t('a-loc',p.loc); t('a-email',p.email); t('a-avail',p.avail);
+  t('c-email',p.email); t('c-loc',p.loc); t('c-phone',p.phone);
+  ['s-github','s-linkedin','s-instagram'].forEach((id,i)=>{
+    const el=g(id); if(el) el.href=[p.gh,p.li,p.ig][i]||'#';
+  });
+  const sl=g('skills-list');
+  if(sl) sl.innerHTML=p.skills.split(',').map(s=>`<span class="skill-tag">${s.trim()}</span>`).join('');
+  document.documentElement.style.setProperty('--accent',D.color||'#FF5500');
+  const cp=g('s-color'); if(cp) cp.value=D.color||'#FF5500';
+  renderProjects(curFilter);
+}
+
+function renderProjects(filter){
+  filter=filter||'all'; curFilter=filter;
+  const cats=[...new Set(D.projects.map(p=>p.cat))];
+  const pff=g('pf-filters');
+  if(pff) pff.innerHTML=`<button class="filter-btn ${filter==='all'?'active':''}" onclick="renderProjects('all')">All</button>`+cats.map(c=>`<button class="filter-btn ${filter===c?'active':''}" onclick="renderProjects('${c}')">${c}</button>`).join('');
+  const list=filter==='all'?D.projects:D.projects.filter(p=>p.cat===filter);
+  const pg=g('pf-grid');
+  if(!pg) return;
+  if(list.length===0){pg.innerHTML=`<div class="empty-state"><div>📂</div>No projects yet — add them in the Admin panel!</div>`;return;}
+  pg.innerHTML=list.map(p=>`<div class="project-card ${p.link?'has-link':''}" ${p.link?`onclick="window.open('${p.link}','_blank')"`:''}>
+    <div class="project-thumb">${p.icon||'💻'}${p.link?'<div class="project-overlay">🔗</div>':''}</div>
+    <div class="project-info">
+      <div class="project-cat">${p.cat} · ${p.year}</div>
+      <div class="project-name">${p.name}</div>
+      <div class="project-desc">${p.desc}</div>
+      <div class="project-tags">${p.tags.split(',').map(t=>`<span class="project-tag">${t.trim()}</span>`).join('')}</div>
+    </div></div>`).join('');
+  observeFade();
+}
+
+// ========== LOGIN ==========
+let loggedIn=false;
+function showLogin(){
+  g('login-modal').classList.add('open');
+  g('l-user').value=''; g('l-pass').value='';
+  g('l-error').style.display='none';
+  setTimeout(()=>g('l-user').focus(),120);
+}
+function hideLogin(){g('login-modal').classList.remove('open');}
+function doLogin(){
+  const u=g('l-user').value.trim(), p=g('l-pass').value;
+  if(u===D.creds.u && p===D.creds.p){
+    loggedIn=true; hideLogin(); openAdmin();
+  } else {
+    g('l-error').style.display='block';
+    g('l-pass').value='';
+  }
+}
+function logoutAdmin(){loggedIn=false;closeAdmin();}
+
+// ========== ADMIN ==========
+function openAdmin(){
+  if(!loggedIn){showLogin();return;}
+  populateForms(); renderAdminProj(); renderAdminMsgs(); updateDash();
+  g('admin-overlay').classList.add('open');
+  const panel=g('admin-panel'); panel.style.display='block';
+  setTimeout(()=>panel.classList.add('open'),10);
+}
+function closeAdmin(){
+  const panel=g('admin-panel');
+  panel.classList.remove('open');
+  g('admin-overlay').classList.remove('open');
+  setTimeout(()=>{panel.style.display='none';},400);
+}
+function switchTab(id,el){
+  document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.admin-section').forEach(x=>x.classList.remove('active'));
+  el.classList.add('active');
+  g('tab-'+id).classList.add('active');
+}
+function populateForms(){
+  const p=D.profile;
+  const map={'pf-name':p.name,'pf-title':p.title,'pf-desc':p.desc,'pf-a1':p.a1,'pf-a2':p.a2,'pf-email':p.email,'pf-phone':p.phone,'pf-loc':p.loc,'pf-gh':p.gh,'pf-li':p.li,'pf-ig':p.ig,'pf-skills':p.skills,'pf-avail':p.avail,'s-user':D.creds.u,'s-color':D.color||'#FF5500'};
+  for(const [id,val] of Object.entries(map)){const el=g(id);if(el)el.value=val||'';}
+}
+function updateDash(){
+  t('d-proj',D.projects.length); t('d-msgs',D.messages.length);
+  const pr=g('d-msg-preview');
+  if(!pr) return;
+  pr.innerHTML=D.messages.length===0?'<p style="color:var(--muted);font-size:14px;">No messages yet.</p>':D.messages.slice(-3).reverse().map(msgHTML).join('');
+}
+function msgHTML(m){
+  return `<div class="msg-card"><div class="msg-card-header"><span class="msg-card-name">${m.name}</span><span class="msg-card-date">${m.date}</span></div><div class="msg-card-email">${m.email}</div><div class="msg-card-subject">${m.subject||'No subject'}</div><div class="msg-card-body">${m.message}</div></div>`;
+}
+
+// PROJECTS
+function addProject(){
+  const name=v('pj-name'); if(!name){alert('Please enter a project name.');return;}
+  D.projects.push({id:Date.now(),name,cat:v('pj-cat')||'General',year:v('pj-year')||'2025',desc:v('pj-desc'),tags:v('pj-tags'),link:v('pj-link'),icon:v('pj-icon')||'💻'});
+  ['pj-name','pj-cat','pj-year','pj-desc','pj-tags','pj-link','pj-icon'].forEach(id=>{const e=g(id);if(e)e.value='';});
+  save(); renderSite(); renderAdminProj(); updateDash(); flash('pj-saved');
+}
+function deleteProject(id){
+  if(!confirm('Delete this project?')) return;
+  D.projects=D.projects.filter(p=>p.id!==id);
+  save(); renderSite(); renderAdminProj(); updateDash();
+}
+function renderAdminProj(){
+  t('pj-count',D.projects.length);
+  const list=g('pj-list'); if(!list) return;
+  list.innerHTML=D.projects.length===0?'<p style="color:var(--muted);font-size:14px;">No projects yet.</p>':
+    D.projects.map(p=>`<div class="aitem"><div class="aitem-icon">${p.icon||'💻'}</div><div class="aitem-info"><div class="aitem-name">${p.name}</div><div class="aitem-meta">${p.cat} · ${p.year}${p.tags?' · '+p.tags:''}</div></div><div class="aitem-actions"><button class="abtn-danger" onclick="deleteProject(${p.id})">Delete</button></div></div>`).join('');
+}
+
+// PROFILE
+function saveProfile(){
+  D.profile={...D.profile,name:v('pf-name')||D.profile.name,title:v('pf-title')||D.profile.title,desc:v('pf-desc')||D.profile.desc,a1:v('pf-a1')||D.profile.a1,a2:v('pf-a2')||D.profile.a2,email:v('pf-email')||D.profile.email,phone:v('pf-phone')||D.profile.phone,loc:v('pf-loc')||D.profile.loc,gh:v('pf-gh')||D.profile.gh,li:v('pf-li')||D.profile.li,ig:v('pf-ig')||D.profile.ig,skills:v('pf-skills')||D.profile.skills,avail:v('pf-avail')||D.profile.avail};
+  save(); renderSite(); flash('pf-saved');
+}
+
+// MESSAGES
+function renderAdminMsgs(){
+  t('m-count',D.messages.length);
+  const list=g('m-list'); if(!list) return;
+  list.innerHTML=D.messages.length===0?'<p style="color:var(--muted);font-size:14px;">No messages yet.</p>':D.messages.slice().reverse().map(msgHTML).join('');
+}
+function clearMsgs(){
+  if(!confirm('Clear all messages?')) return;
+  D.messages=[]; save(); renderAdminMsgs(); updateDash();
+}
+
+// SETTINGS
+function saveCreds(){
+  const u=v('s-user'),p=v('s-pass'),p2=v('s-pass2'),err=g('s-err');
+  err.style.display='none';
+  if(!u){err.textContent='Username cannot be empty.';err.style.display='block';return;}
+  if(p&&p!==p2){err.textContent='Passwords do not match.';err.style.display='block';return;}
+  D.creds.u=u; if(p) D.creds.p=p;
+  g('s-pass').value=''; g('s-pass2').value='';
+  save(); flash('s-saved');
+}
+function saveColor(){
+  D.color=v('s-color')||'#FF5500';
+  save(); renderSite(); flash('s-color-saved');
+}
+function resetAll(){
+  if(!confirm('Reset ALL data? This cannot be undone!')) return;
+  if(!confirm('Are you absolutely sure?')) return;
+  localStorage.removeItem('pf_d'); localStorage.removeItem('pf_ver'); location.reload();
+}
+
+// CONTACT FORM
+function submitContact(){
+  const name=g('cf-name').value.trim(),email=g('cf-email').value.trim(),subject=g('cf-subject').value.trim(),message=g('cf-msg').value.trim(),st=g('form-status');
+  if(!name||!email||!message){st.textContent='Please fill in all required fields.';st.className='form-message error';st.style.display='block';return;}
+  D.messages.push({name,email,subject,message,date:new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})});
+  save();
+  st.textContent="✓ Message sent! I'll get back to you soon.";
+  st.className='form-message success'; st.style.display='block';
+  ['cf-name','cf-email','cf-subject','cf-msg'].forEach(id=>{const e=g(id);if(e)e.value='';});
+  setTimeout(()=>{st.style.display='none';},4000);
+}
+
+// UTILS
+function flash(id){const el=g(id);if(!el)return;el.style.display='inline';setTimeout(()=>{el.style.display='none';},2500);}
+function scrollTo(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+function setActive(el){document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));el.classList.add('active');}
+function toggleMenu(){
+  const l=document.querySelector('.nav-links');
+  l.style.display=l.style.display==='flex'?'none':'flex';
+  if(l.style.display==='flex') l.style.cssText='display:flex;flex-direction:column;position:fixed;top:60px;left:0;right:0;background:var(--bg2);padding:24px;gap:20px;border-bottom:1px solid var(--border);z-index:999;';
+}
+window.addEventListener('scroll',()=>{g('navbar').style.background=window.scrollY>50?'rgba(10,10,10,0.98)':'rgba(10,10,10,0.85)';});
+function observeFade(){
+  const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
+  document.querySelectorAll('.fade-up').forEach(el=>{el.classList.remove('visible');obs.observe(el);});
+}
+
+// ========== INIT ==========
+renderSite();
+observeFade();
+</script>
+</body>
+</html>
